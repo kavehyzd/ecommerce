@@ -39,6 +39,13 @@ export class UsersService {
       throw new BadRequestException('خطایی رخ داده است');
     }
   }
+  async findOneByMobile(mobile: string) {
+    try {
+      return await this.userRepository.findOneBy({ mobile });
+    } catch (error) {
+      throw new BadRequestException('خطایی رخ داده است');
+    }
+  }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
     const user = await this.findOne(id);
