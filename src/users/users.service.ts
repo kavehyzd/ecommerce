@@ -2,12 +2,12 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
-} from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './entities/user.entity';
+} from "@nestjs/common";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { User } from "./entities/user.entity";
 @Injectable()
 export class UsersService {
   constructor(
@@ -20,7 +20,7 @@ export class UsersService {
       return await this.userRepository.save(newUser);
     } catch (error) {
       console.log(error);
-      throw new BadRequestException('خطایی رخ داده است');
+      throw new BadRequestException("خطایی رخ داده است");
     }
   }
 
@@ -28,7 +28,7 @@ export class UsersService {
     try {
       return await this.userRepository.find();
     } catch (error) {
-      throw new BadRequestException('خطایی رخ داده است');
+      throw new BadRequestException("خطایی رخ داده است");
     }
   }
 
@@ -36,14 +36,14 @@ export class UsersService {
     try {
       return await this.userRepository.findOneBy({ id });
     } catch (error) {
-      throw new BadRequestException('خطایی رخ داده است');
+      throw new BadRequestException("خطایی رخ داده است");
     }
   }
   async findOneByMobile(mobile: string) {
     try {
       return await this.userRepository.findOneBy({ mobile });
     } catch (error) {
-      throw new BadRequestException('خطایی رخ داده است');
+      throw new BadRequestException("خطایی رخ داده است");
     }
   }
 
@@ -57,7 +57,7 @@ export class UsersService {
       });
       return await this.findOne(id);
     } catch (error) {
-      throw new BadRequestException('خطایی رخ داده است');
+      throw new BadRequestException("خطایی رخ داده است");
     }
   }
 

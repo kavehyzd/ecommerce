@@ -8,13 +8,13 @@ import {
   HttpStatus,
   Res,
   Put,
-} from '@nestjs/common';
-import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import type { Response } from 'express';
+} from "@nestjs/common";
+import { UsersService } from "./users.service";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto";
+import type { Response } from "express";
 
-@Controller('users')
+@Controller("users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -25,7 +25,7 @@ export class UsersController {
     return res.status(HttpStatus.CREATED).json({
       statuscode: HttpStatus.CREATED,
       date: createUser,
-      message: 'کاربر ایجاد شد',
+      message: "کاربر ایجاد شد",
     });
   }
 
@@ -35,23 +35,23 @@ export class UsersController {
     return res.status(HttpStatus.OK).json({
       statuscode: HttpStatus.OK,
       data: users,
-      message: 'لیست کاربران با موفقیت دریافت شد ',
+      message: "لیست کاربران با موفقیت دریافت شد ",
     });
   }
 
-  @Get(':id')
-  async findOne(@Param('id') id: number, @Res() res: Response) {
+  @Get(":id")
+  async findOne(@Param("id") id: number, @Res() res: Response) {
     const user = await this.usersService.findOne(+id);
     return res.status(HttpStatus.OK).json({
       statuscode: HttpStatus.OK,
       data: user,
-      message: 'کاربر با موفقیت دریافت شد',
+      message: "کاربر با موفقیت دریافت شد",
     });
   }
 
-  @Put(':id')
+  @Put(":id")
   async update(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body() updateUserDto: UpdateUserDto,
     @Res() res: Response,
   ) {
@@ -59,17 +59,17 @@ export class UsersController {
     return res.status(HttpStatus.OK).json({
       status: HttpStatus.OK,
       data: user,
-      message: 'کاربر با موفقیت آپدیت شد',
+      message: "کاربر با موفقیت آپدیت شد",
     });
   }
 
-  @Delete(':id')
-  async remove(@Param('id') id: number, @Res() res: Response) {
+  @Delete(":id")
+  async remove(@Param("id") id: number, @Res() res: Response) {
     await this.usersService.remove(+id);
     return res.status(HttpStatus.OK).json({
       status: HttpStatus.OK,
       data: null,
-      message: 'کاربر با موفقیت حذف شد',
+      message: "کاربر با موفقیت حذف شد",
     });
   }
 }
