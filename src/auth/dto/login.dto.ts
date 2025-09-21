@@ -1,4 +1,4 @@
-import { IsString, Length, IsNotEmpty, MinLength } from "class-validator";
+import { IsString, Length, IsNotEmpty } from "class-validator";
 
 export class LoginDto {
   @IsString({ message: "موبایل باید وارد شود" })
